@@ -29,8 +29,8 @@
       global $oscTemplate, $mimemessage, $order, $payment, $products_ordered, $insert_id, $order_totals, $customer_id, $sendto, $billto;
 
       if ($oscTemplate->_email_data['orders']['enable_osc_mail'] == 'True') {
-        if (is_object($$payment)) {
-          $payment_class = $$payment;
+        if (is_object($GLOBALS[$payment])) {
+          $payment_class = $GLOBALS[$payment];
         }
 
         $mimemessage = new email(array('X-Mailer: osCommerce'));
@@ -73,7 +73,7 @@
 
         $insert_id = $oID;
 
-        $$payment = new payment_demo;
+        $payment_class = new payment_demo;
 
         $comment_query = tep_db_query("select comments from orders_status_history where orders_id = '" . $oID . "' limit 1");
         $comment = tep_db_fetch_array($comment_query);
