@@ -79,6 +79,11 @@
     }
   }
 
+  // correct links
+  $admin_dir = substr($req['path'], ($request_type == 'SSL') ? strlen(DIR_WS_HTTPS_CATALOG) : strlen(DIR_WS_CATALOG));
+  $admin_dir = str_replace($PHP_SELF, '', $admin_dir);
+  $template = str_replace($admin_dir, '', $template);
+
   if ($mode == 'text') {
     $template = strip_tags($template);
     header("Content-Type: text/plain");
