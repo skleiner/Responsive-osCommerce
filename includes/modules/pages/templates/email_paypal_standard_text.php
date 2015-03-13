@@ -27,7 +27,7 @@
               EMAIL_SEPARATOR . "\n" .
               tep_address_label($customer_id, $billto, 0, '', "\n") . "\n\n";
 
-  if (is_object($$payment)) {
+  if (is_object($payment_class)) {
     echo EMAIL_TEXT_PAYMENT_METHOD . "\n" .
          EMAIL_SEPARATOR . "\n";
     echo $payment_class->title . "\n\n";

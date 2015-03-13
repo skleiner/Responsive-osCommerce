@@ -102,7 +102,7 @@
                             </td>
                           </tr>
                           <?php
-                            if (is_object($$payment)) {
+                            if (is_object($payment_class)) {
                           ?>
                           <tr>
                             <td>
