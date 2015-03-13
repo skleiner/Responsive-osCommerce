@@ -29,8 +29,8 @@
       global $oscTemplate, $mimemessage, $order, $payment, $products_ordered, $order_id, $order_totals, $customer_id, $sendto, $billto;
 
       if ($oscTemplate->_email_data['paypal_standard']['enable_osc_mail'] == 'True') {
-        if (is_object($$payment)) {
-          $payment_class = $$payment;
+        if (is_object($GLOBALS[$payment])) {
+          $payment_class = $GLOBALS[$payment];
         }
 
         $mimemessage = new email(array('X-Mailer: osCommerce'));
