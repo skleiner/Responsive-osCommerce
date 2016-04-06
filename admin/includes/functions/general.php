@@ -1501,6 +1501,16 @@
     return $category['categories_seo_keywords'];
   }
   
+  function tep_get_category_seo_title($category_id, $language_id = 0) {
+    global $languages_id;
+
+    if ($language_id == 0) $language_id = $languages_id;
+    $category_query = tep_db_query("select categories_seo_title from categories_description where categories_id = '" . (int)$category_id . "' and language_id = '" . (int)$language_id . "'");
+    $category = tep_db_fetch_array($category_query);
+
+    return $category['categories_seo_title'];
+  }
+  
   function tep_get_manufacturer_seo_description($manufacturer_id, $language_id) {
     $manufacturer_query = tep_db_query("select manufacturers_seo_description from manufacturers_info where manufacturers_id = '" . (int)$manufacturer_id . "' and languages_id = '" . (int)$language_id . "'");
     $manufacturer = tep_db_fetch_array($manufacturer_query);
@@ -1513,5 +1523,35 @@
     $manufacturer = tep_db_fetch_array($manufacturer_query);
 
     return $manufacturer['manufacturers_seo_keywords'];
+  }
+  
+  function tep_get_products_seo_description($product_id, $language_id = 0) {
+    global $languages_id;
+
+    if ($language_id == 0) $language_id = $languages_id;
+    $product_query = tep_db_query("select products_seo_description from products_description where products_id = '" . (int)$product_id . "' and language_id = '" . (int)$language_id . "'");
+    $product = tep_db_fetch_array($product_query);
+
+    return $product['products_seo_description'];
+  }
+  
+  function tep_get_products_seo_keywords($product_id, $language_id = 0) {
+    global $languages_id;
+
+    if ($language_id == 0) $language_id = $languages_id;
+    $product_query = tep_db_query("select products_seo_keywords from products_description where products_id = '" . (int)$product_id . "' and language_id = '" . (int)$language_id . "'");
+    $product = tep_db_fetch_array($product_query);
+
+    return $product['products_seo_keywords'];
+  }
+  
+  function tep_get_products_seo_title($product_id, $language_id = 0) {
+    global $languages_id;
+
+    if ($language_id == 0) $language_id = $languages_id;
+    $product_query = tep_db_query("select products_seo_title from products_description where products_id = '" . (int)$product_id . "' and language_id = '" . (int)$language_id . "'");
+    $product = tep_db_fetch_array($product_query);
+
+    return $product['products_seo_title'];
   }
   
