@@ -256,6 +256,7 @@ CREATE TABLE manufacturers_info (
   manufacturers_description TEXT NULL,
   manufacturers_seo_description TEXT NULL,
   manufacturers_seo_keywords VARCHAR(128) NULL,
+  manufacturers_seo_title VARCHAR(128) NULL,
   PRIMARY KEY (manufacturers_id, languages_id)
 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 
@@ -1155,16 +1156,16 @@ INSERT INTO manufacturers VALUES (8,'GT Interactive','manufacturer_gt_interactiv
 INSERT INTO manufacturers VALUES (9,'Hewlett Packard','manufacturer_hewlett_packard.gif', now(), null);
 INSERT INTO manufacturers VALUES (10,'Samsung','manufacturer_samsung.png', now(), null);
 
-INSERT INTO manufacturers_info VALUES (1, 1, 'http://www.matrox.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (2, 1, 'http://www.microsoft.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (3, 1, 'http://www.warner.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (4, 1, 'http://www.fox.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (5, 1, 'http://www.logitech.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (6, 1, 'http://www.canon.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (7, 1, 'http://www.sierra.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (8, 1, 'http://www.infogrames.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (9, 1, 'http://www.hewlettpackard.com', 0, null, '', '', '');
-INSERT INTO manufacturers_info VALUES (10, 1, 'http://www.samsung.com', 0, null, '', '', '');
+INSERT INTO manufacturers_info VALUES (1, 1, 'http://www.matrox.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (2, 1, 'http://www.microsoft.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (3, 1, 'http://www.warner.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (4, 1, 'http://www.fox.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (5, 1, 'http://www.logitech.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (6, 1, 'http://www.canon.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (7, 1, 'http://www.sierra.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (8, 1, 'http://www.infogrames.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (9, 1, 'http://www.hewlettpackard.com', 0, null, null, null, null, null);
+INSERT INTO manufacturers_info VALUES (10, 1, 'http://www.samsung.com', 0, null, null, null, null, null);
 
 INSERT INTO orders_status VALUES ( '1', '1', 'Pending', '1', '0');
 INSERT INTO orders_status VALUES ( '2', '1', 'Processing', '1', '1');
@@ -1564,10 +1565,16 @@ INSERT INTO configuration (configuration_title, configuration_key, configuration
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) VALUES ('Installed Modules', 'MODULE_HEADER_TAGS_INSTALLED', 'ht_canonical.php;ht_manufacturer_title.php;ht_category_title.php;ht_product_title.php;ht_robot_noindex.php;ht_datepicker_jquery.php;ht_grid_list_view.php;ht_table_click_jquery.php;ht_product_colorbox.php;ht_noscript.php', 'List of header tag module filenames separated by a semi-colon. This is automatically updated. No need to edit.', '6', '0', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Category Title Module', 'MODULE_HEADER_TAGS_CATEGORY_TITLE_STATUS', 'True', 'Do you want to allow category titles to be added to the page title?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_HEADER_TAGS_CATEGORY_TITLE_SORT_ORDER', '200', 'Sort order of display. Lowest is displayed first.', '6', '0', now());
+INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('SEO Title Override?', 'MODULE_HEADER_TAGS_CATEGORY_TITLE_SEO_TITLE_OVERRIDE', 'True', 'Do you want to allow category titles to be over-ridden by your SEO Titles (if set)?', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
+INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('SEO Breadcrumb Override?', 'MODULE_HEADER_TAGS_CATEGORY_TITLE_SEO_BREADCRUMB_OVERRIDE', 'True', 'Do you want to allow category names in the breadcrumb to be over-ridden by your SEO Titles (if set)?', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Manufacturer Title Module', 'MODULE_HEADER_TAGS_MANUFACTURER_TITLE_STATUS', 'True', 'Do you want to allow manufacturer titles to be added to the page title?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_HEADER_TAGS_MANUFACTURER_TITLE_SORT_ORDER', '100', 'Sort order of display. Lowest is displayed first.', '6', '0', now());
+INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('SEO Title Override?', 'MODULE_HEADER_TAGS_MANUFACTURER_TITLE_SEO_TITLE_OVERRIDE', 'True', 'Do you want to allow manufacturer names to be over-ridden by your SEO Titles (if set)?', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
+INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('SEO Breadcrumb Override?', 'MODULE_HEADER_TAGS_MANUFACTURER_TITLE_SEO_BREADCRUMB_OVERRIDE', 'True', 'Do you want to allow manufacturer names in the breadcrumb to be over-ridden by your SEO Titles (if set)?', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Product Title Module', 'MODULE_HEADER_TAGS_PRODUCT_TITLE_STATUS', 'True', 'Do you want to allow product titles to be added to the page title?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_HEADER_TAGS_PRODUCT_TITLE_SORT_ORDER', '300', 'Sort order of display. Lowest is displayed first.', '6', '0', now());
+INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('SEO Title Override?', 'MODULE_HEADER_TAGS_PRODUCT_TITLE_SEO_TITLE_OVERRIDE', 'True', 'Do you want to allow product titles to be over-ridden by your SEO Titles (if set)?', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
+INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('SEO Breadcrumb Override?', 'MODULE_HEADER_TAGS_PRODUCT_TITLE_SEO_BREADCRUMB_OVERRIDE', 'True', 'Do you want to allow product names in the breadcrumb to be over-ridden by your SEO Titles (if set)?', '6', '0', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Canonical Module', 'MODULE_HEADER_TAGS_CANONICAL_STATUS', 'True', 'Do you want to enable the Canonical module?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_HEADER_TAGS_CANONICAL_SORT_ORDER', '400', 'Sort order of display. Lowest is displayed first.', '6', '0', now());
 INSERT INTO configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Robot NoIndex Module', 'MODULE_HEADER_TAGS_ROBOT_NOINDEX_STATUS', 'True', 'Do you want to enable the Robot NoIndex module?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now());
