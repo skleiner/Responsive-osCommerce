@@ -47,6 +47,20 @@
       
       $module_file_name = DIR_FS_CATALOG_MODULES . 'content/' . $module_group . '/templates/' . $template_file . '.php';
       
+      //sometimes file names aren't done the same :(
+      if ( !file_exists($module_file_name) && is_dir( DIR_FS_CATALOG_MODULES . 'content/' . $module_group . '/templates' ) ) {
+        $template_directory_glob = glob( DIR_FS_CATALOG_MODULES . 'content/' . $module_group . '/templates/*.php' ); 
+        $file_basename_array = array();
+        foreach ( $template_directory_glob as $file ) {
+            $file_basename_array[] = str_replace( '.php', '', basename($file) );
+        }
+        foreach ( $file_basename_array as $file ) {
+            if ( strpos( $template_file, $file ) !== false ) {
+                $module_file_name = DIR_FS_CATALOG_MODULES . 'content/' . $module_group . '/templates/' . $file . '.php';
+            }
+        }
+      }
+      
       if (file_exists($module_file_name)) { 
         $file_array = file($module_file_name);
         $contents   = implode('', $file_array);
@@ -70,6 +84,8 @@
                         });';
             $output .= '</script>';
         }
+      }else{
+        $output = '<br><br><strong>No template file available for editing.</strong>';
       }
       
       return $output;
