@@ -5,7 +5,7 @@
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
 
-  Copyright (c) 2014 osCommerce
+  Copyright (c) 2018 osCommerce
 
   Released under the GNU General Public License
 */
@@ -29,7 +29,7 @@
     }
 
     function execute() {
-      global $PHP_SELF, $oscTemplate;
+      global $PHP_SELF, $oscTemplate, $item_width;
 
       if (tep_not_null(MODULE_HEADER_TAGS_GRID_LIST_VIEW_PAGES)) {
         $pages_array = array();
@@ -48,20 +48,20 @@
 var cc = sessionStorage.list_grid;
   
 if (cc == 'list') {
-  $('#products .item').removeClass('grid-group-item').addClass('list-group-item');
+  $('#products .item').removeClass('g-g-i').addClass('l-g-i').addClass('col-sm-12');
 }else {
-  $('#products .item').removeClass('list-group-item').addClass('grid-group-item');
+  $('#products .item').removeClass('l-g-i').addClass('g-g-i').removeClass('col-sm-12');
 }
   
 $(document).ready(function() {
-  $('#list').click(function(event){ 
+  $('#list').click(function(event){
     event.preventDefault();
-    $('#products .item').addClass('list-group-item').removeClass('grid-group-item');
+    $('#products .item').addClass('l-g-i').removeClass('g-g-i').addClass('col-sm-12');
     sessionStorage.setItem('list_grid', 'list');
   });
   $('#grid').click(function(event){
     event.preventDefault();
-    $('#products .item').removeClass('list-group-item').addClass('grid-group-item');
+    $('#products .item').removeClass('l-g-i').addClass('g-g-i').removeClass('col-sm-12');
     sessionStorage.setItem('list_grid', 'grid');
   });    
 });
@@ -81,13 +81,13 @@ EOD;
     }
 
     function install() {
-      tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Grid List javascript', 'MODULE_HEADER_TAGS_GRID_LIST_VIEW_STATUS', 'True', 'Do you want to enable the Grid/List Javascript module?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
-	    tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Pages', 'MODULE_HEADER_TAGS_GRID_LIST_VIEW_PAGES', '" . implode(';', $this->get_default_pages()) . "', 'The pages to add the Grid List JS Scripts to.', '6', '4', 'ht_grid_list_view_show_pages', 'ht_grid_list_view_edit_pages(', now())");
-	    tep_db_query("insert into " . TABLE_CONFIGURATION . " (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_HEADER_TAGS_GRID_LIST_VIEW_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '5', now())");
+      tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, set_function, date_added) values ('Enable Grid List javascript', 'MODULE_HEADER_TAGS_GRID_LIST_VIEW_STATUS', 'True', 'Do you want to enable the Grid/List Javascript module?', '6', '1', 'tep_cfg_select_option(array(\'True\', \'False\'), ', now())");
+	    tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, use_function, set_function, date_added) values ('Pages', 'MODULE_HEADER_TAGS_GRID_LIST_VIEW_PAGES', '" . implode(';', $this->get_default_pages()) . "', 'The pages to add the Grid List JS Scripts to.', '6', '4', 'ht_grid_list_view_show_pages', 'ht_grid_list_view_edit_pages(', now())");
+	    tep_db_query("insert into configuration (configuration_title, configuration_key, configuration_value, configuration_description, configuration_group_id, sort_order, date_added) values ('Sort Order', 'MODULE_HEADER_TAGS_GRID_LIST_VIEW_SORT_ORDER', '0', 'Sort order of display. Lowest is displayed first.', '6', '5', now())");
     }
 
     function remove() {
-      tep_db_query("delete from " . TABLE_CONFIGURATION . " where configuration_key in ('" . implode("', '", $this->keys()) . "')");
+      tep_db_query("delete from configuration where configuration_key in ('" . implode("', '", $this->keys()) . "')");
     }
 
     function keys() {
