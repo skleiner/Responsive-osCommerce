@@ -26,15 +26,15 @@
 
 <div class="row">
   <div class="col-sm-9">
-    <div class="alert alert-info">
+    <div class="alert alert-info" role="alert">
       <h1>New Installation</h1>
 
-      <p>This web-based installation routine will correctly setup and configure osCommerce Online Merchant to run on this server.</p>
+      <p>This web-based installation routine will correctly setup and configure OSCOM CE Phoenix to run on this server.</p>
       <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
     </div>
   </div>
   <div class="col-sm-3">
-    <div class="card">
+    <div class="card mb-2">
       <div class="card-body">
         <ol>
           <li class="text-muted">Database Server</li>
@@ -52,12 +52,12 @@
   </div>
 </div>
 
-<div class="clearfix"></div>
+<div class="w-100"></div>
 
 <div class="row">
   <div class="col-xs-12 col-sm-9">
     <h2 class="h4">Web Server</h2>
-    <p class="text-danger pull-right text-right"><span class="fa fa-asterisk text-danger"></span> Required information</p>
+    <p class="text-danger pull-right text-right"><i class="fas fa-asterisk text-danger"></i> Required information</p>
 
     <form name="install" id="installForm" action="install.php?step=3" method="post" role="form">
 
@@ -65,7 +65,7 @@
         <label for="wwwAddress" class="col-form-label col-sm-3 text-left text-sm-right">WWW Address</label>
         <div class="col-sm-9">
           <?php echo osc_draw_input_field('HTTP_WWW_ADDRESS', $www_location, 'required aria-required="true" id="wwwAddress" placeholder="http://"'); ?>
-          <span class="fa fa-asterisk form-control-feedback text-danger"></span>
+          <i class="fas fa-asterisk form-control-feedback text-danger"></i>
           <span class="form-text">The web address to the online store.</span>
         </div>
       </div>
@@ -74,7 +74,7 @@
         <label for="webRoot" class="col-form-label col-sm-3 text-left text-sm-right">Webserver Root Directory</label>
         <div class="col-sm-9">
           <?php echo osc_draw_input_field('DIR_FS_DOCUMENT_ROOT', $dir_fs_www_root, 'required aria-required="true" id="webRoot"'); ?>
-          <span class="fa fa-asterisk form-control-feedback text-danger"></span>
+          <i class="fas fa-asterisk form-control-feedback text-danger"></i>
           <span class="form-text">The directory where the online store is installed on the server.</span>
         </div>
       </div>
@@ -93,7 +93,7 @@
   </div>
   <div class="col-xs-12 col-sm-3">
     <h2 class="h4">Step 2</h2>
-    <div class="card card-body">      
+    <div class="card mb-2 card-body">      
       <p>The web server takes care of serving the pages of your online store to your guests and customers. The web server parameters make sure the links to the pages point to the correct location.</p>
     </div>
   </div>

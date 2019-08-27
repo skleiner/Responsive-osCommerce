@@ -40,11 +40,11 @@
   <div class="row">
   
     <div class="col-sm-8">
-      <div class="alert alert-info"><?php echo PRIMARY_ADDRESS_DESCRIPTION; ?></div>
+      <div class="alert alert-info" role="alert"><?php echo PRIMARY_ADDRESS_DESCRIPTION; ?></div>
     </div>
     
     <div class="col-sm-4">
-      <div class="card text-white bg-info">
+      <div class="card mb-2 text-white bg-info">
         <div class="card-header"><?php echo PRIMARY_ADDRESS_TITLE; ?></div>
 
         <div class="card-body">
@@ -55,11 +55,11 @@
     
   </div>
 
-  <div class="clearfix"></div>
+  <div class="w-100"></div>
 
   <h4><?php echo ADDRESS_BOOK_TITLE; ?></h4>
   
-  <div class="alert alert-danger"><?php echo sprintf(TEXT_MAXIMUM_ENTRIES, MAX_ADDRESS_BOOK_ENTRIES); ?></div>
+  <div class="alert alert-danger" role="alert"><?php echo sprintf(TEXT_MAXIMUM_ENTRIES, MAX_ADDRESS_BOOK_ENTRIES); ?></div>
 
   <div class="row">
 <?php
@@ -68,12 +68,12 @@
     $format_id = tep_get_address_format_id($addresses['country_id']);
 ?>
     <div class="col-sm-4">
-      <div class="card <?php echo ($addresses['address_book_id'] == $customer_default_address_id) ? ' text-white bg-info' : ' bg-light'; ?>">
+      <div class="card mb-2 <?php echo ($addresses['address_book_id'] == $customer_default_address_id) ? ' text-white bg-info' : ' bg-light'; ?>">
         <div class="card-header"><?php echo tep_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']); ?></strong><?php if ($addresses['address_book_id'] == $customer_default_address_id) echo '&nbsp;<small><i>' . PRIMARY_ADDRESS . '</i></small>'; ?></div>
         <div class="card-body">
           <?php echo tep_address_format($format_id, $addresses, true, ' ', '<br />'); ?>
         </div>
-        <div class="card-footer text-center"><?php echo tep_draw_button(SMALL_IMAGE_BUTTON_EDIT, 'fa fa-file', tep_href_link('address_book_process.php', 'edit=' . $addresses['address_book_id'], 'SSL'), null, null, 'btn btn-dark btn-sm') . ' ' . tep_draw_button(SMALL_IMAGE_BUTTON_DELETE, 'fas fa-trash-alt', tep_href_link('address_book_process.php', 'delete=' . $addresses['address_book_id'], 'SSL'), null, null, 'btn btn-dark btn-sm'); ?></div>
+        <div class="card-footer text-center"><?php echo tep_draw_button(SMALL_IMAGE_BUTTON_EDIT, 'fas fa-file', tep_href_link('address_book_process.php', 'edit=' . $addresses['address_book_id'], 'SSL'), null, null, 'btn btn-dark btn-sm') . ' ' . tep_draw_button(SMALL_IMAGE_BUTTON_DELETE, 'fas fa-trash-alt', tep_href_link('address_book_process.php', 'delete=' . $addresses['address_book_id'], 'SSL'), null, null, 'btn btn-dark btn-sm'); ?></div>
       </div>
     </div>
 <?php
@@ -85,11 +85,11 @@
 <?php
   if (tep_count_customer_address_book_entries() < MAX_ADDRESS_BOOK_ENTRIES) {
 ?>
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_ADD_ADDRESS, 'fa fa-home', tep_href_link('address_book_process.php', '', 'SSL'), 'primary', null, 'btn-success btn-lg btn-block'); ?></div>
+    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_ADD_ADDRESS, 'fas fa-home', tep_href_link('address_book_process.php', '', 'SSL'), 'primary', null, 'btn-success btn-lg btn-block'); ?></div>
 <?php
   }
 ?>
-    <p><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'fa fa-angle-left', tep_href_link('account.php', '', 'SSL')); ?></p>
+    <p><?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'fas fa-angle-left', tep_href_link('account.php', '', 'SSL')); ?></p>
   </div>
 
 </div>

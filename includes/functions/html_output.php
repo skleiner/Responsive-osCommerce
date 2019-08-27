@@ -345,6 +345,8 @@
     static $button_counter = 1;
 
     $types = array('submit', 'button', 'reset');
+    
+    if ( !is_array($params) ) $params = array();
 
     if ( !isset($params['type']) ) {
       $params['type'] = 'submit';
@@ -381,7 +383,7 @@
 
     $button .= ' class="btn ';
 
-    $button .= (isset($style)) ? $style : 'btn-default';
+    $button .= (isset($style)) ? $style : 'btn-outline-secondary';
 
     $button .= '">';
 
@@ -404,9 +406,9 @@
 
   // review stars
   function tep_draw_stars($rating = 0) {
-    $stars = str_repeat('<span class="fas fa-star"></span>', (int)$rating);
-    $stars .= str_repeat('<span class="far fa-star"></span>', 5-(int)$rating);
+    $stars = str_repeat('<i class="fas fa-star"></i>', (int)$rating);
+    $stars .= str_repeat('<i class="far fa-star"></i>', 5-(int)$rating);
 
-    return $stars;
+    return '<span class="text-warning">' . $stars . '</span>';
   }
   

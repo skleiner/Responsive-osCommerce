@@ -219,10 +219,10 @@
 
   <div class="row">
     <div class="col-sm-8">
-      <div class="alert alert-warning"><?php echo TEXT_SELECTED_PAYMENT_DESTINATION; ?></div>
+      <div class="alert alert-warning" role="alert"><?php echo TEXT_SELECTED_PAYMENT_DESTINATION; ?></div>
     </div>
     <div class="col-sm-4">
-      <div class="card">
+      <div class="card mb-2">
         <div class="card-header"><?php echo TITLE_PAYMENT_ADDRESS; ?></div>
 
         <div class="card-body">
@@ -239,7 +239,7 @@
 
   <h4><?php echo TABLE_HEADING_ADDRESS_BOOK_ENTRIES; ?></h4>
   
-  <div class="alert alert-info"><?php echo TEXT_SELECT_OTHER_PAYMENT_DESTINATION; ?></div>
+  <div class="alert alert-info" role="alert"><?php echo TEXT_SELECT_OTHER_PAYMENT_DESTINATION; ?></div>
 
   <div class="row">
 
@@ -254,7 +254,7 @@
 ?>
       <div class="col-sm-4">
         <div class="card<?php echo ($addresses['address_book_id'] == $billto) ? ' text-white bg-info' : ' bg-light'; ?>">
-          <div class="card-header"><?php echo tep_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']); ?></strong></div>
+          <div class="card-header"><?php echo tep_output_string_protected($addresses['firstname'] . ' ' . $addresses['lastname']); ?></div>
           <div class="card-body">
             <?php echo tep_address_format($format_id, $addresses, true, ' ', '<br />'); ?>
           </div>
@@ -278,7 +278,7 @@
 
   <h4><?php echo TABLE_HEADING_NEW_PAYMENT_ADDRESS; ?></h4>
   
-  <div class="alert alert-info"><?php echo TEXT_CREATE_NEW_PAYMENT_ADDRESS; ?></div>
+  <div class="alert alert-info" role="alert"><?php echo TEXT_CREATE_NEW_PAYMENT_ADDRESS; ?></div>
 
   <?php require('includes/modules/checkout_new_address.php'); ?>
 
@@ -287,7 +287,7 @@
 ?>
 
   <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_hidden_field('action', 'submit') . tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-angle-right', null, 'primary', null, 'btn-success btn-lg btn-block'); ?></div>
+    <div class="text-right"><?php echo tep_draw_hidden_field('action', 'submit') . tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fas fa-angle-right', null, 'primary', null, 'btn-success btn-lg btn-block'); ?></div>
   </div>
 
   <div class="progressBarHook">
@@ -302,7 +302,7 @@
 ?>
 
   <div class="buttonSet">
-    <?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'fa fa-angle-left', tep_href_link('checkout_payment_address.php', '', 'SSL')); ?>
+    <?php echo tep_draw_button(IMAGE_BUTTON_BACK, 'fas fa-angle-left', tep_href_link('checkout_payment.php', '', 'SSL')); ?>
   </div>
 
 <?php

@@ -17,20 +17,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>osCommerce, Starting Your Online Business</title>
+    <title>OSCOM, Starting Your Online Business with CE Phoenix</title>
     <meta name="robots" content="noindex,nofollow" />
     <link rel="icon" type="image/png" href="images/oscommerce_icon.png" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link rel="stylesheet" href="templates/main_page/stylesheet.css" />
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   </head>
 
   <body>
     <div class="container">
       <div class="row">
         <div id="storeLogo" class="col-sm-6">
-          <a href="index.php"><img src="images/oscommerce.png" title="osCommerce Online Merchant" style="margin: 10px 10px 0 10px;" /></a>
+          <a href="index.php"><img src="images/oscommerce.png" title="OSCOM CE Phoenix" style="margin: 10px 10px 0 10px;" /></a>
         </div>
 
         <div id="headerShortcuts" class="col-sm-6">
@@ -47,7 +47,7 @@
       <?php require('templates/pages/' . $page_contents); ?>
 
       <footer>
-        <div class="card bg-light mb-3 card-body text-center"><p>osCommerce Online Merchant Copyright &copy; 2000-<?php echo date('Y'); ?> <a href="http://www.oscommerce.com" target="_blank">osCommerce</a> (<a href="http://www.oscommerce.com/Us&amp;Legal" target="_blank">Copyright and Trademark Policy</a>)</p></div>
+        <div class="card bg-light mb-3 card-body text-center"><p>OSCOM CE Phoenix &copy; 2000-<?php echo date('Y'); ?> <a href="http://www.oscommerce.com" target="_blank">osCommerce</a> (<a href="http://www.oscommerce.com/Us&amp;Legal" target="_blank">Copyright and Trademark Policy</a>)</p></div>
       </footer>
     </div>
 

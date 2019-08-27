@@ -38,15 +38,15 @@
 
 <div class="row">
   <div class="col-sm-9">
-    <div class="alert alert-info">
+    <div class="alert alert-info" role="alert">
       <h1>New Installation</h1>
 
-      <p>This web-based installation routine will correctly setup and configure osCommerce Online Merchant to run on this server.</p>
+      <p>This web-based installation routine will correctly setup and configure OSCOM CE Phoenix to run on this server.</p>
       <p>Please follow the on-screen instructions that will take you through the database server, web server, and store configuration options. If help is needed at any stage, please consult the documentation or seek help at the community support forums.</p>
     </div>
   </div>
   <div class="col-sm-3">
-    <div class="card">
+    <div class="card mb-2">
       <div class="card-body">
         <ol>
           <li class="text-muted">Database Server</li>
@@ -64,7 +64,7 @@
   </div>
 </div>
 
-<div class="clearfix"></div>
+<div class="w-100"></div>
 
 <div class="row">
   <div class="col-xs-12 col-sm-9">
@@ -192,7 +192,7 @@
     }
     ?>
 
-    <div class="alert alert-success">The installation of your online store was successful! Click on either button to start your online selling experience:</div>
+    <div class="alert alert-success" role="alert">The installation of your online store was successful! Click on either button to start your online selling experience:</div>
 
     <br />
 
@@ -204,9 +204,9 @@
   
   <div class="col-xs-12 col-sm-3">
     <h2 class="h4">Step 4</h2>
-    <div class="card">
+    <div class="card mb-2">
       <div class="card-body">      
-        <p>Congratulations on installing and configuring osCommerce Online Merchant as your online store solution!</p>
+        <p>Congratulations on installing and configuring OSCOM CE Phoenix as your online store solution!</p>
         <p>We wish you all the best with the success of your online store and welcome you to join and participate in our community.</p>
       </div>
       <div class="card-footer">      

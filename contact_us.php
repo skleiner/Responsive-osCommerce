@@ -26,6 +26,8 @@
 
       $messageStack->add('contact', ENTRY_EMAIL_ADDRESS_CHECK_ERROR);
     }
+    
+    $OSCOM_Hooks->call('siteWide', 'injectFormVerify');
 
     $actionRecorder = new actionRecorder('ar_contact_us', (tep_session_is_registered('customer_id') ? $customer_id : null), $name);
     if (!$actionRecorder->canPerform()) {
@@ -61,10 +63,10 @@
 ?>
 
 <div class="contentContainer">
-  <div class="alert alert-info"><?php echo TEXT_SUCCESS; ?></div>
+  <div class="alert alert-info" role="alert"><?php echo TEXT_SUCCESS; ?></div>
 
   <div class="buttonSet">
-    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fa fa-angle-right', tep_href_link('index.php'), null, null, 'btn-light btn-block btn-lg'); ?></div>
+    <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fas fa-angle-right', tep_href_link('index.php'), null, null, 'btn-light btn-block btn-lg'); ?></div>
   </div>
 </div>
 
@@ -81,7 +83,7 @@
   </div>
 
   <p class="text-danger text-right"><?php echo FORM_REQUIRED_INFORMATION; ?></p>
-  <div class="clearfix"></div>
+  <div class="w-100"></div>
   
   <div class="form-group row">
     <label for="inputFromName" class="col-sm-3 col-form-label text-right"><?php echo ENTRY_NAME; ?></label>
@@ -113,6 +115,10 @@
     </div>
   </div>    
 
+  <?php
+  echo $OSCOM_Hooks->call('siteWide', 'injectFormDisplay');
+  ?>
+  
   <div class="buttonSet">
     <div class="text-right"><?php echo tep_draw_button(IMAGE_BUTTON_CONTINUE, 'fas fa-paper-plane', null, 'primary', null, 'btn-success btn-block btn-lg'); ?></div>
   </div>

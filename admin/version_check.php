@@ -21,8 +21,17 @@
 
   if (function_exists('curl_init')) {
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'http://www.oscommerce.com/version/online_merchant/' . $major_version);
+    curl_setopt($ch, CURLOPT_URL, 'https://www.oscommerce.com/version/online_merchant/ce/phoenix/' . $major_version);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    if ( file_exists(DIR_FS_CATALOG . 'includes/cacert.pem') ) {
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+      curl_setopt($ch, CURLOPT_CAINFO, DIR_FS_CATALOG . 'includes/cacert.pem');
+    }
+    else {
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    }
+    
     $response = trim(curl_exec($ch));
     curl_close($ch);
 
@@ -31,7 +40,7 @@
     }
   } else {
     if ($fp = @fsockopen('www.oscommerce.com', 80, $errno, $errstr, 30)) {
-      $header = 'GET /version/online_merchant/' . $major_version . ' HTTP/1.0' . "\r\n" .
+      $header = 'GET /version/online_merchant/ce/phoenix/' . $major_version . ' HTTP/1.0' . "\r\n" .
                 'Host: www.oscommerce.com' . "\r\n" .
                 'Connection: close' . "\r\n\r\n";
 
@@ -92,7 +101,7 @@
         </table></td>
       </tr>
       <tr>
-        <td class="smallText"><?php echo TITLE_INSTALLED_VERSION . ' <strong>osCommerce Online Merchant v' . $current_version . '</strong>'; ?></td>
+        <td class="smallText"><?php echo TITLE_INSTALLED_VERSION . ' <strong>OSCOM CE Phoenix v' . $current_version . '</strong>'; ?></td>
       </tr>
       <tr>
         <td><?php echo tep_draw_separator('pixel_trans.gif', '1', '10'); ?></td>
@@ -122,14 +131,14 @@
     foreach ($new_versions as $version) {
 ?>
               <tr class="dataTableRow" onmouseover="rowOverEffect(this)" onmouseout="rowOutEffect(this)">
-                <td class="dataTableContent"><?php echo '<a href="' . $version[2] . '" target="_blank">osCommerce Online Merchant v' . $version[0] . '</a>'; ?></td>
+                <td class="dataTableContent"><?php echo '<a href="' . $version[2] . '" target="_blank">OSCOM CE Phoenix v' . $version[0] . '</a>'; ?></td>
                 <td class="dataTableContent"><?php echo tep_date_long(substr($version[1], 0, 4) . '-' . substr($version[1], 4, 2) . '-' . substr($version[1], 6, 2)); ?></td>
                 <td class="dataTableContent" align="right"><?php echo '<a href="' . $version[2] . '" target="_blank">' . tep_image('images/icon_info.gif', IMAGE_ICON_INFO) . '</a>'; ?>&nbsp;</td>
               </tr>
 <?php
     }
 ?>
-            </table></rd>
+            </table></td>
           </tr>
         </table></td>
       </tr>
