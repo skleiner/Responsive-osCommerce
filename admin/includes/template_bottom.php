@@ -11,15 +11,20 @@
 */
 ?>
 
+  </div>
+
+  <?php 
+  if (tep_session_is_registered('admin')) require('includes/footer.php');
+
+  echo $OSCOM_Hooks->call('siteWide', 'injectSiteEnd');
+  ?>
+
+  </div>
 </div>
 
-<?php 
-require('includes/footer.php');
-
-echo $OSCOM_Hooks->call('siteWide', 'injectSiteEnd');
+<?php
+echo $OSCOM_Hooks->call('siteWide', 'injectBodyEnd');
 ?>
-
-<br />
 
 </body>
 </html>

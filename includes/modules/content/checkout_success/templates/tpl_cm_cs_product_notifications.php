@@ -1,12 +1,30 @@
-<div class="col-sm-12 cm-cs-product-notifications">
-  <div class="card mb-2">
-    <div class="card-header">
-      <?php echo MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TEXT_NOTIFY_PRODUCTS; ?>
-    </div>
-    <div class="card-body">
-      <p class="productsNotifications">
-        <?php echo $products_notifications; ?>
-      </p>
-    </div>
+<div class="col-sm-<?php echo $content_width; ?> cm-cs-product-notifications">
+  <h5 class="mb-1"><?php echo MODULE_CONTENT_CHECKOUT_SUCCESS_PRODUCT_NOTIFICATIONS_TEXT_NOTIFY_PRODUCTS; ?></h5>
+  
+  <div class="border">
+    <ul class="list-group list-group-flush">
+      <?php
+  foreach ($products_displayed as $id => $name) {
+    echo '<li class="list-group-item">';
+    echo '<div class="custom-control custom-switch">';
+    echo tep_draw_checkbox_field('notify[]', $id, false, 'class="custom-control-input" id="notify_' . $id . '"');
+    echo '<label class="custom-control-label" for="notify_' . $id . '">' . $name . '</label></div>';
+    echo '</li>' . PHP_EOL;
+  }
+?>
+    </ul>
   </div>
 </div>
+
+<?php
+/*
+  $Id$
+
+  osCommerce, Open Source E-Commerce Solutions
+  http://www.oscommerce.com
+
+  Copyright (c) 2020 osCommerce
+
+  Released under the GNU General Public License
+*/
+?>

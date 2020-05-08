@@ -38,13 +38,13 @@
     }
 
     function tep_sort_admin_boxes($a, $b) {
-      return strcasecmp($a['heading'], $b['heading']);
+      return strcasecmp(strip_tags($a['heading']), strip_tags($b['heading']));
     }
 
     usort($cl_box_groups, 'tep_sort_admin_boxes');
 
     function tep_sort_admin_boxes_links($a, $b) {
-      return strcasecmp($a['title'], $b['title']);
+      return strcasecmp(strip_tags($a['title']), strip_tags($b['title']));
     }
 
     foreach ( $cl_box_groups as &$group ) {
@@ -52,45 +52,46 @@
     }
 ?>
 
-<div id="adminAppMenu">
+<div class="col-md-3 col-lg-2 pt-2">
+  <div id="adminAppMenu">
 
-<?php
-    foreach ($cl_box_groups as $groups) {
-      echo '<h3><a href="#">' . $groups['heading'] . '</a></h3>' .
-           '<div><ul>';
+  <?php
+      foreach ($cl_box_groups as $groups) {
+        echo '<h3><a href="#">' . $groups['heading'] . '</a></h3>' .
+             '<div><ul>';
 
-      foreach ($groups['apps'] as $app) {
-        echo '<li><a href="' . $app['link'] . '">' . $app['title'] . '</a></li>';
-      }
-
-      echo '</ul></div>';
-    }
-?>
-
-</div>
-
-<script type="text/javascript">
-$('#adminAppMenu').accordion({
-  heightStyle: 'content',
-  collapsible: true,
-
-<?php
-    $counter = 0;
-    foreach ($cl_box_groups as $groups) {
-      foreach ($groups['apps'] as $app) {
-        if ($app['code'] == $PHP_SELF) {
-          break 2;
+        foreach ($groups['apps'] as $app) {
+          echo '<li><a href="' . $app['link'] . '">' . $app['title'] . '</a></li>';
         }
+
+        echo '</ul></div>';
+      }
+  ?>
+
+  </div>
+  <script>
+  $('#adminAppMenu').accordion({
+    heightStyle: 'content',
+    collapsible: true,
+
+  <?php
+      $counter = 0;
+      foreach ($cl_box_groups as $groups) {
+        foreach ($groups['apps'] as $app) {
+          if ($app['code'] == $PHP_SELF) {
+            break 2;
+          }
+        }
+
+        $counter++;
       }
 
-      $counter++;
-    }
+      echo 'active: ' . (isset($app) && ($app['code'] == $PHP_SELF) ? $counter : 'false');
+  ?>
 
-    echo 'active: ' . (isset($app) && ($app['code'] == $PHP_SELF) ? $counter : 'false');
-?>
-
-});
-</script>
+  });
+  </script>
+</div>
 
 <?php
   }

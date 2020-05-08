@@ -25,8 +25,8 @@
 <?php
   if ( ($listing_split->number_of_rows > 0) && ( (PREV_NEXT_BAR_LOCATION == '1') || (PREV_NEXT_BAR_LOCATION == '3') ) ) {
 ?>
-<div class="row">
-  <div class="col-sm-6 pagenumber d-none d-sm-block">
+<div class="row align-items-center">
+  <div class="col-sm-6 d-none d-sm-block">
     <?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?>
   </div>
   <div class="col-sm-6">
@@ -101,7 +101,7 @@
       if (isset($_GET['manufacturers_id'])  && tep_not_null($_GET['manufacturers_id'])) {
         $prod_list_contents .= '<a href="' . tep_href_link('product_info.php', 'manufacturers_id=' . (int)$_GET['manufacturers_id'] . '&products_id=' . (int)$listing['products_id']) . '">' . tep_image('images/' . $listing['products_image'], htmlspecialchars($listing['products_name']), SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, '', true, 'card-img-top') . '</a>' . PHP_EOL;
       } else {
-        $prod_list_contents .= '<a href="' . tep_href_link('product_info.php', (isset($sort) ? 'sort=' . $sort . '&' : '') . ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . (int)$listing['products_id']) . '">' . tep_image('images/' . $listing['products_image'], htmlspecialchars($listing['products_name']), SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, '', true, 'card-img-top') . '</a>' . PHP_EOL;
+        $prod_list_contents .= '<a href="' . tep_href_link('product_info.php', (isset($sort) ? 'sort=' . $sort . '&' : '') . 'products_id=' . (int)$listing['products_id']) . '">' . tep_image('images/' . $listing['products_image'], htmlspecialchars($listing['products_name']), SMALL_IMAGE_WIDTH, SMALL_IMAGE_HEIGHT, '', true, 'card-img-top') . '</a>' . PHP_EOL;
       }
 
       $prod_list_contents .= '<div class="card-body">' . PHP_EOL;
@@ -109,7 +109,7 @@
         if (isset($_GET['manufacturers_id']) && tep_not_null($_GET['manufacturers_id'])) {
           $prod_list_contents .= '<a href="' . tep_href_link('product_info.php', 'manufacturers_id=' . (int)$_GET['manufacturers_id'] . '&products_id=' . (int)$listing['products_id']) . '">' . $listing['products_name'] . '</a>';
         } else {
-          $prod_list_contents .= '<a href="' . tep_href_link('product_info.php', ($cPath ? 'cPath=' . $cPath . '&' : '') . 'products_id=' . (int)$listing['products_id']) . '">' . $listing['products_name'] . '</a>';
+          $prod_list_contents .= '<a href="' . tep_href_link('product_info.php', 'products_id=' . (int)$listing['products_id']) . '">' . $listing['products_name'] . '</a>';
         }
         $prod_list_contents .= '</h5>' . PHP_EOL;
         $prod_list_contents .= '<h6 class="card-subtitle mb-2 text-muted">';
@@ -129,9 +129,9 @@
 
       $prod_list_contents .= '<div class="card-footer bg-white pt-0 border-0">' . PHP_EOL;
         $prod_list_contents .= '<div class="btn-group" role="group">';
-          $prod_list_contents .= tep_draw_button(IS_PRODUCT_BUTTON_VIEW, '', tep_href_link('product_info.php', tep_get_all_get_params(array('action', 'products_id', 'sort', 'keywords')) . 'products_id=' . (int)$listing['products_id']), NULL, NULL, 'btn-info btn-product-listing btn-view') . PHP_EOL;
+          $prod_list_contents .= tep_draw_button(IS_PRODUCT_BUTTON_VIEW, '', tep_href_link('product_info.php', tep_get_all_get_params(array('action')) . 'products_id=' . (int)$listing['products_id']), NULL, NULL, 'btn-info btn-product-listing btn-view') . PHP_EOL;
           $has_attributes = (tep_has_product_attributes((int)$listing['products_id']) === true) ? '1' : '0';
-          if ($has_attributes == 0) $prod_list_contents .= tep_draw_button(IS_PRODUCT_BUTTON_BUY, '', tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action', 'products_id', 'sort', 'keywords')) . 'action=buy_now&products_id=' . (int)$listing['products_id']), NULL, array('params' => 'data-has-attributes="' . $has_attributes . '" data-in-stock="' . (int)$listing['in_stock'] . '" data-product-id="' . (int)$listing['products_id'] . '"'), 'btn-light btn-product-listing btn-buy') . PHP_EOL;
+          if ($has_attributes == 0) $prod_list_contents .= tep_draw_button(IS_PRODUCT_BUTTON_BUY, '', tep_href_link(basename($PHP_SELF), tep_get_all_get_params(array('action')) . 'action=buy_now&products_id=' . (int)$listing['products_id']), NULL, array('params' => 'data-has-attributes="' . $has_attributes . '" data-in-stock="' . (int)$listing['in_stock'] . '" data-product-id="' . (int)$listing['products_id'] . '"'), 'btn-light btn-product-listing btn-buy') . PHP_EOL;
         $prod_list_contents .= '</div>' . PHP_EOL;
       $prod_list_contents .= '</div>' . PHP_EOL;
 
@@ -154,8 +154,8 @@
 
 if ( ($listing_split->number_of_rows > 0) && ((PREV_NEXT_BAR_LOCATION == '2') || (PREV_NEXT_BAR_LOCATION == '3')) ) {
   ?>
-<div class="row">
-  <div class="col-sm-6 pagenumber d-none d-sm-block">
+<div class="row align-items-center">
+  <div class="col-sm-6 d-none d-sm-block">
     <?php echo $listing_split->display_count(TEXT_DISPLAY_NUMBER_OF_PRODUCTS); ?>
   </div>
   <div class="col-sm-6">
